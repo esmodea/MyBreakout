@@ -10,6 +10,8 @@ function PlayState:init()
 
     self.ball.x = VIRTUAL_WIDTH / 2 - 4
     self.ball.y = VIRTUAL_HEIGHT - 42
+
+    self.bricks = LevelMaker.createMap()
 end
 
 function PlayState:update(dt)
@@ -29,6 +31,12 @@ function PlayState:update(dt)
     self.paddle:update(dt)
     self.ball:update(dt)
 
+    for k, brick in pairs(self.bricks) do
+        if brick.inPlay and self.ball:collides(brick) then
+            brick:hit()
+        end
+    end
+
     if self.ball:collides(self.paddle) then
         self.ball.y = self.paddle.y - self.ball.height
         self.ball.dy = -self.ball.dy
@@ -41,6 +49,10 @@ function PlayState:update(dt)
 end
 
 function PlayState:render()
+    for k, brick in pairs(self.bricks) do
+        brick:render()
+    end
+
     self.paddle:render()
     self.ball:render()
 
