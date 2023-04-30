@@ -31,12 +31,6 @@ function PlayState:update(dt)
     self.paddle:update(dt)
     self.ball:update(dt)
 
-    for k, brick in pairs(self.bricks) do
-        if brick.inPlay and self.ball:collides(brick) then
-            brick:hit()
-        end
-    end
-
     if self.ball:collides(self.paddle) then
         self.ball.y = self.paddle.y - self.ball.height
         self.ball.dy = -self.ball.dy
