@@ -15,4 +15,6 @@ function LevelMaker.createMap(level)
             table.insert(bricks, b)
         end
     end
+
+    return bricks
 end
