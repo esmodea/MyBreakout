@@ -1,17 +1,14 @@
 PlayState = Class{__includes = BaseState}
 
-function PlayState:init()
-    self.paddle = Paddle()
-
-    self.ball = Ball(1)
+function PlayState:enter(params)
+    self.paddle = params.paddle
+    self.ball = params.ball
+    self.bricks = params.bricks
+    self.score = params.score
+    self.health = params.health
 
     self.ball.dx = math.random(-200, 200)
     self.ball.dy = math.random(-50, -60)
-
-    self.ball.x = VIRTUAL_WIDTH / 2 - 4
-    self.ball.y = VIRTUAL_HEIGHT - 42
-
-    self.bricks = LevelMaker.createMap()
 end
 
 function PlayState:update(dt)
