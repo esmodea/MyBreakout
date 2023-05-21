@@ -1,3 +1,12 @@
+NONE = 1
+SINGLE_PYRAMID = 2
+MULTI_PYRAMID = 3
+
+SOLID = 1
+ALTERNATE = 2
+SKIP = 3
+NONE = 4
+
 LevelMaker = Class{}
 
 function LevelMaker.createMap(level)
