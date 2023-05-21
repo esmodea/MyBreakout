@@ -12,7 +12,7 @@ function GameOverState:update(dt)
     if love.keyboard.wasPressed('escape') then
         love.event.quit()
     end
-end 
+end
 
 function GameOverState:render()
     love.graphics.setFont(gFonts['large'])
