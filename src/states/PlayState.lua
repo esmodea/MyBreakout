@@ -48,6 +48,18 @@ function PlayState:update(dt)
 
             brick:hit()
 
+            if self:checkVictory() then
+                gSounds['victory']:play()
+
+                gStateMachine:change('victory', {
+                    level = self.level,
+                    paddle = self.paddle,
+                    health = self.health,
+                    score = self.score,
+                    ball = self.ball
+                })
+            end
+
             if self.ball.x + 2 < brick.x and self.ball.dx > 0 then
                 self.ball.dx = -self.ball.dx
                 self.ball.x = brick.x - self.ball.width
