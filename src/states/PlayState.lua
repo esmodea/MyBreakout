@@ -6,6 +6,7 @@ function PlayState:enter(params)
     self.bricks = params.bricks
     self.score = params.score
     self.health = params.health
+    self.level = params.level
 
     self.ball.dx = math.random(-200, 200)
     self.ball.dy = math.random(-50, -60)
