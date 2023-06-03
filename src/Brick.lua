@@ -63,7 +63,7 @@ function Brick:hit()
         paletteColors[self.color].r / 255,
         paletteColors[self.color].g / 255,
         paletteColors[self.color].b / 255,
-        0
+        0 / 255
     )
     self.psystem:emit(64)
 
@@ -89,6 +89,10 @@ function Brick:hit()
         gSounds['brick-hit-1']:stop()
         gSounds['brick-hit-1']:play()
     end
+end
+
+function Brick:update(dt)
+    self.psystem:update(dt)
 end
 
 function Brick:render()
