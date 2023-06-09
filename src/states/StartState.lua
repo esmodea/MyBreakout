@@ -20,6 +20,12 @@ function StartState:update(dt)
                 level = 1
             })
         end
+
+        if highlighted == 2 then
+            gStateMachine:change('high-scores', {
+                highScores = self.highScores
+            })
+        end
     end
 
     if love.keyboard.wasPressed('escape') then
