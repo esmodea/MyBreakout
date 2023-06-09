@@ -128,3 +128,17 @@ function renderScore(score)
     love.graphics.print('Score:', VIRTUAL_WIDTH - 60, 5)
     love.graphics.printf(tostring(score), VIRTUAL_WIDTH - 50, 5, 40, 'right')
 end
+
+function loadHighScores()
+    love.filesystem.setIdentity('breakout')
+
+    if not love.filesystem.getInfo('breakout.lst') then
+        local scores = ''
+        for i = 10, 1, -1 do 
+            scores = scores .. 'CTO\n'
+            scores = scores .. tostring(i * 1000) .. '\n'
+        end
+
+        love.filesystem.write('breakout.lst', scores)
+    end
+end
