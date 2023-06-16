@@ -62,7 +62,9 @@ function love.load()
         ['high-score'] = function() return HighScoreState() end
     }
 
-    gStateMachine:change('start')
+    gStateMachine:change('start', {
+        highScores = loadHighScores()
+    })
 
     love.keyboard.keysPressed = {}
 end
@@ -149,7 +151,7 @@ function loadHighScores()
 
     local scores = {}
 
-    for i = 1, 10 do    
+    for i = 1, 10 do
         scores[i] = {
             name = nil,
             score = nil
