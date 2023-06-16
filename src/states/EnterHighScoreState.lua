@@ -62,3 +62,29 @@ function EnterHighScoreState:update(dt)
         end
     end
 end
+
+function EnterHighScoreState:render()
+    love.graphics.setFont(gFonts['medium'])
+    love.graphics.printf('Your score: ' .. tostring(self.score), 0, 30, VIRTUAL_WIDTH, 'center')
+
+    love.graphics.setFont(gFonts['large'])
+
+    if highlightedChar == 1 then
+        love.graphics.setColor(103/255, 1, 1, 1)
+    end
+    love.graphics.print(string.char(chars[1]), VIRTUAL_WIDTH / 2 - 28, VIRTUAL_HEIGHT / 2)
+    love.graphics.setColor(1, 1, 1, 1)
+    if highlightedChar == 2 then
+        love.graphics.setColor(103/255, 1, 1, 1)
+    end
+    love.graphics.print(string.char(chars[2]), VIRTUAL_WIDTH / 2 - 28, VIRTUAL_HEIGHT / 2)
+    love.graphics.setColor(1, 1, 1, 1)
+    if highlightedChar == 3 then
+        love.graphics.setColor(103/255, 1, 1, 1)
+    end
+    love.graphics.print(string.char(chars[3]), VIRTUAL_WIDTH / 2 - 28, VIRTUAL_HEIGHT / 2)
+    love.graphics.setColor(1, 1, 1, 1)
+
+    love.graphics.setFont(gFonts['small'])
+    love.graphics.printf('Press Enter to confirm!', 0, VIRTUAL_HEIGHT - 18, VIRTUAL_WIDTH, 'center')
+end
