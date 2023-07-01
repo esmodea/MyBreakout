@@ -18,7 +18,7 @@ function EnterHighScoreState:update(dt)
     if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then 
         local name = string.char(chars[1]) .. string.char(chars[2]) .. string.char(chars[3])
 
-        for i = 10, self.scoreIndex, -1 do  
+        for i = 10, self.scoreIndex, -1 do
             self.highScores[i + 1] = {
                 name = self.highScores[i].name,
                 score = self.highScores[i].score
@@ -35,7 +35,7 @@ function EnterHighScoreState:update(dt)
             scoresStr = scoresStr .. tostring(self.highScores[i].score) .. '\n'
         end
 
-        love.filesystem.write('breakout.1st', scoresStr)
+        love.filesystem.write('breakout.lst', scoresStr)
 
         gStateMachine:change('high-score', {
             highScores = self.highScores
