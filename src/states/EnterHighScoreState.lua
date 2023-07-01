@@ -37,7 +37,7 @@ function EnterHighScoreState:update(dt)
 
         love.filesystem.write('breakout.1st', scoresStr)
 
-        gStateMachine:change('high-scores', {
+        gStateMachine:change('high-score', {
             highScores = self.highScores
         }) 
     end
