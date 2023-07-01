@@ -39,26 +39,26 @@ function EnterHighScoreState:update(dt)
 
         gStateMachine:change('high-scores', {
             highScores = self.highScores
-        })
+        }) 
+    end
 
-        if love.keyboard.wasPressed('left') and highlightedChar > 1 then
-            highlightedChar = highlightedChar - 1
-            gSounds['select']:play()
-        elseif love.keyboard.wasPressed('right') and highlightedChar < 3 then
-            highlightedChar = highlightedChar + 1
-            gSounds['select']:play()
+    if love.keyboard.wasPressed('left') and highlightedChar > 1 then
+        highlightedChar = highlightedChar - 1
+        gSounds['select']:play()
+    elseif love.keyboard.wasPressed('right') and highlightedChar < 3 then
+        highlightedChar = highlightedChar + 1
+        gSounds['select']:play()
+    end
+
+    if love.keyboard.wasPressed('up') then
+        chars[highlightedChar] = chars[highlightedChar] + 1
+        if chars[highlightedChar] > 90 then
+            chars[highlightedChar] = 65
         end
-
-        if love.keyboard.wasPressed('up') then
-            chars[highlightedChar] = chars[highlightedChar] + 1
-            if chars[highlightedChar] > 90 then
-                chars[highlightedChar] = 65
-            end
-        elseif love.keyboard.wasPressed('down') then
-            chars[highlightedChar] = chars[highlightedChar] - 1
-            if chars[highlightedChar] < 65 then
-                chars[highlightedChar] = 90
-            end
+    elseif love.keyboard.wasPressed('down') then
+        chars[highlightedChar] = chars[highlightedChar] - 1
+        if chars[highlightedChar] < 65 then
+            chars[highlightedChar] = 90
         end
     end
 end
@@ -77,12 +77,12 @@ function EnterHighScoreState:render()
     if highlightedChar == 2 then
         love.graphics.setColor(103/255, 1, 1, 1)
     end
-    love.graphics.print(string.char(chars[2]), VIRTUAL_WIDTH / 2 - 28, VIRTUAL_HEIGHT / 2)
+    love.graphics.print(string.char(chars[2]), VIRTUAL_WIDTH / 2 - 6, VIRTUAL_HEIGHT / 2)
     love.graphics.setColor(1, 1, 1, 1)
     if highlightedChar == 3 then
         love.graphics.setColor(103/255, 1, 1, 1)
     end
-    love.graphics.print(string.char(chars[3]), VIRTUAL_WIDTH / 2 - 28, VIRTUAL_HEIGHT / 2)
+    love.graphics.print(string.char(chars[3]), VIRTUAL_WIDTH / 2 + 20, VIRTUAL_HEIGHT / 2)
     love.graphics.setColor(1, 1, 1, 1)
 
     love.graphics.setFont(gFonts['small'])
