@@ -3,7 +3,7 @@ StartState = Class{__includes = BaseState}
 local highlighted = 1
 
 function StartState:enter(params)
-    self.highScores = params.highScores
+    self.highScores = loadHighScores()
 end
 
 function StartState:update(dt)
