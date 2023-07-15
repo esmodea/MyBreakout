@@ -7,12 +7,12 @@ function Paddle:init(skin)
 
     self.dx = 0
 
-    self.width = 64
+    self.size = 1
+
+    self.width = 32 * self.size
     self.height = 16
 
     self.skin = skin
-
-    self.size = 2
 end
 
 function Paddle:update(dt)
