@@ -77,6 +77,9 @@ end
 
 function love.update(dt)
     gStateMachine:update(dt)
+    
+    gSounds['music']:setLooping(true)
+    gSounds['music']:play()
 
     love.keyboard.keysPressed = {}
 end
