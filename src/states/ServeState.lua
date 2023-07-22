@@ -6,6 +6,8 @@ function ServeState:enter(params)
     self.health = params.health
     self.score = params.score
     self.level = params.level
+    self.lengthPowerup = params.lengthPowerup
+    self.lengthPowerup2 = params.lengthPowerup2
     self.direction = math.floor(math.random(0, 2))
 
     self.ball = Ball()

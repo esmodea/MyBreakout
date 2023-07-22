@@ -8,6 +8,8 @@ function PlayState:enter(params)
     self.health = params.health
     self.level = params.level
     self.direction = params.direction
+    self.lengthPowerup = params.lengthPowerup
+    self.lengthPowerup2 = params.lengthPowerup2
 
 
     if params.direction == 0 then
@@ -38,6 +40,10 @@ function PlayState:update(dt)
     if self.ball:collides(self.paddle) then
         self.ball.y = self.paddle.y - self.ball.height
         self.ball.dy = -self.ball.dy
+
+        if self.lengthPowerup == false and self.score > 2500 then
+            if self.paddle.size <= 3 then self.paddle.size = self.paddle.size + 1 end
+        end
 
         if self.paddle.dx < 0 then
             self.ball.dx = -50 + -(8 * (self.paddle.x + self.paddle.width / 2 - self.ball.x))
