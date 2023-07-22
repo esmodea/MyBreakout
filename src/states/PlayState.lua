@@ -41,7 +41,12 @@ function PlayState:update(dt)
         self.ball.y = self.paddle.y - self.ball.height
         self.ball.dy = -self.ball.dy
 
-        if self.score > 500 and not self.lengthPowerup then
+        if self.score > (1500 / self.health) and not self.lengthPowerup then
+            self.lengthPowerup = true
+            if self.paddle.size <= 3 then self.paddle.size = self.paddle.size + 1 end
+        end
+        if self.score > (15000 / self.health) and not self.lengthPowerup2 then
+            self.lengthPowerup2 = true
             if self.paddle.size <= 3 then self.paddle.size = self.paddle.size + 1 end
         end
 
