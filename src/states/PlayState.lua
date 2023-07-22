@@ -41,7 +41,7 @@ function PlayState:update(dt)
         self.ball.y = self.paddle.y - self.ball.height
         self.ball.dy = -self.ball.dy
 
-        if self.lengthPowerup == false and self.score > 2500 then
+        if self.score > 500 and not self.lengthPowerup then
             if self.paddle.size <= 3 then self.paddle.size = self.paddle.size + 1 end
         end
 
@@ -131,7 +131,7 @@ function PlayState:render()
         brick:renderParticles()
     end
 
-    self.paddle:render()
+    self.paddle:render(self.paddle.size)
     self.ball:render()
 
     renderScore(self.score)
