@@ -6,6 +6,7 @@ function ServeState:enter(params)
     self.health = params.health
     self.score = params.score
     self.level = params.level
+    self.direction = math.floor(math.random(0, 2))
 
     self.ball = Ball()
     self.ball.skin = math.random(7)
@@ -17,13 +18,19 @@ function ServeState:update(dt)
     self.ball.y = self.paddle.y - 8
 
     if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
+        if love.keyboard.wasPressed('left') then
+            self.direction = 0
+        elseif love.keyboard.wasPressed('right') then
+            self.direction = 1
+        end
         gStateMachine:change('play', {
             paddle = self.paddle,
             bricks = self.bricks,
             health = self.health,
             score = self.score,
             ball = self.ball,
-            level = self.level
+            level = self.level,
+            direction = self.direction,
         })
     end
 
