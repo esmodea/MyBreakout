@@ -7,8 +7,14 @@ function PlayState:enter(params)
     self.score = params.score
     self.health = params.health
     self.level = params.level
+    self.direction = params.direction
 
-    self.ball.dx = math.random(-200, 200)
+
+    if params.direction == 0 then
+        self.ball.dx = math.abs(math.random(-200, 200))
+    else
+        self.ball.dx = -math.abs(math.random(-200, 200))
+    end
     self.ball.dy = math.random(-50, -60)
 end
 
@@ -33,9 +39,9 @@ function PlayState:update(dt)
         self.ball.y = self.paddle.y - self.ball.height
         self.ball.dy = -self.ball.dy
 
-        if self.ball.x < self.paddle.x + (self.paddle.width / 2) and self.paddle.dx < 0 then
+        if self.paddle.dx < 0 then
             self.ball.dx = -50 + -(8 * (self.paddle.x + self.paddle.width / 2 - self.ball.x))
-        elseif self.ball.x > self.paddle.x + (self.paddle.width / 2) and self.paddle.dx > 0 then
+        elseif self.paddle.dx > 0 then
             self.ball.dx = 50 + (8 * math.abs(self.paddle.x + self.paddle.width / 2 - self.ball.x))
         end
 
@@ -62,21 +68,12 @@ function PlayState:update(dt)
             end
 
             if self.ball.x + 2 < brick.x and self.ball.dx > 0 then
-                if self.score > 9999 then
-                    self.health = self.health + 1
-                end
                 self.ball.dx = -self.ball.dx
                 self.ball.x = brick.x - self.ball.width
             elseif self.ball.x + 6 > brick.x + brick.width and self.ball.dx < 0 then
-                if self.score > 9999 then
-                    self.health = self.health + 1
-                end
                 self.ball.dx = -self.ball.dx
                 self.ball.x = brick.x + brick.width
             elseif self.ball.y < brick.y then
-                if self.score > 9999 then
-                    self.health = self.health + 1
-                end
                 self.ball.dy = -self.ball.dy
                 self.ball.y = brick.y - self.ball.height
             else
@@ -148,4 +145,18 @@ function PlayState:checkVictory()
     end
 
     return true 
+end
+
+function PlayState:checkPowerup()
+    local powerup = ''
+    local healthPowerups = 0
+    if self.score > 1000 and math.floor(self.score / 1000) % (1000 / healthPowerups) == 0 then
+        healthPowerups = healthPowerups + 1
+        if not self.health == 3 then 
+            self.health = self.health + 1
+        else
+            --soon I will add functionality to grow paddle.
+        end
+    end
+
 end
