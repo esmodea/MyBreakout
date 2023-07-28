@@ -17,7 +17,7 @@ function PlayState:enter(params)
     else
         self.ball.dx = -math.abs(math.random(-200, 200))
     end
-    self.ball.dy = math.random(-50, -60)
+    self.ball.dy = math.random(-70, -80)
 end
 
 function PlayState:update(dt)
@@ -51,9 +51,9 @@ function PlayState:update(dt)
         end
 
         if self.paddle.dx < 0 then
-            self.ball.dx = -50 + -(8 * (self.paddle.x + self.paddle.width / 2 - self.ball.x))
+            self.ball.dx = -50 + -math.abs(8 * (self.paddle.x + self.paddle.width / 2 - self.ball.x))
         elseif self.paddle.dx > 0 then
-            self.ball.dx = 50 + (8 * math.abs(self.paddle.x + self.paddle.width / 2 - self.ball.x))
+            self.ball.dx = 50 + math.abs(8 * (self.paddle.x + self.paddle.width / 2 - self.ball.x))
         end
 
         gSounds['paddle-hit']:play()
