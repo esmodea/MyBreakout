@@ -74,7 +74,9 @@ function PlayState:update(dt)
                     paddle = self.paddle,
                     health = self.health,
                     score = self.score,
-                    ball = self.ball
+                    ball = self.ball,
+                    lengthPowerup = self.lengthPowerup,
+                    lengthPowerup2 = self.lengthPowerup2
                 })
             end
 
@@ -113,7 +115,9 @@ function PlayState:update(dt)
                 paddle = self.paddle,
                 bricks = self.bricks,
                 health = self.health,
-                score = self.score
+                score = self.score,
+                lengthPowerup = self.lengthPowerup,
+                lengthPowerup2 = self.lengthPowerup2
             })
         end
     end
