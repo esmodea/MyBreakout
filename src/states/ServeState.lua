@@ -34,6 +34,7 @@ function ServeState:update(dt)
             level = self.level,
             direction = self.direction,
             lengthPowerup = self.lengthPowerup,
+            lengthPowerup2 = self.lengthPowerup2
         })
     end
 
