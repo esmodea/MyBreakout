@@ -33,6 +33,7 @@ function ServeState:update(dt)
             ball = self.ball,
             level = self.level,
             direction = self.direction,
+            lengthPowerup = self.lengthPowerup,
         })
     end
 
